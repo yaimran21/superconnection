@@ -16,5 +16,11 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    //for user frofile
+    Route::get('/profile', 'ProfileController@index')->name('profile');
+    Route::post('/profile', 'ProfileController@update_avatar')->name('profile');
 
-Route::get('/home', 'HomeController@index')->name('home');
+});
+

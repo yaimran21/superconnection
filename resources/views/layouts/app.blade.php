@@ -11,7 +11,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -32,10 +32,12 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'TeddyBear') }}
                     </a>
-                        <a class="navbar-brand" href="#"><i class="fa fa-btn fa-user"></i>
+                        <a class="navbar-brand" href="{{url('/profile')}}"><i class="fa fa-btn fa-user"></i>
                             Profile
+                        </a><a class="navbar-brand" href="{{url('/home')}}"><i class="fa fa-btn fa-home"></i>
+                            Home
                         </a>
                 </div>
 
@@ -54,7 +56,8 @@
                                 </i>Register</a>
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative; padding-left: 50px">
+                                    <img src="/uploads/avatars/{{Auth::user()->avatar}}" style="height:32px;height: 32px;float: left;border-radius: 50%; position: absolute; top: 10px; left: 10px">
                                     {{ucwords( Auth::user()->name )}} <span class="caret"></span>
                                 </a>
 
